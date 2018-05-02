@@ -42,7 +42,12 @@ class App extends Component{//<Props>
   render() {
     return (
       <View style={styles.container}>
-        <TextInput onChangeText={(angka1)=>this.setState({ms:angka1})} style={{height:40,width:250,backgroundColor:'lightblue'}} placeholder='Massa(kg)' value={this.state.ms}  />
+        <TextInput onFocus={()=>{
+          var st = this.state.stat
+          if(st){
+            this.setState({stat:!this.state.stat})
+          }
+        }} onChangeText={(angka1)=>this.setState({ms:angka1})} style={{height:40,width:250,backgroundColor:'lightblue'}} placeholder='Massa(kg)' value={this.state.ms}  />
         <Text>{'\n'}</Text>
         <TextInput onChangeText={(angka2)=>this.setState({hg:angka2})} style={{height:40,width:250,backgroundColor:'lightblue'}} placeholder='tinggi(cm' value={this.state.hg}  />
         <Text>{'\n'}</Text>
