@@ -40,6 +40,7 @@ class App extends Component{//<Props>
     })
   }
   render() {
+    console.disableYellowBox=true;
     return (
       <View style={styles.container}>
         <TextInput onFocus={()=>{
@@ -49,15 +50,24 @@ class App extends Component{//<Props>
           }
         }} onChangeText={(angka1)=>this.setState({ms:angka1})} style={{height:40,width:250,backgroundColor:'lightblue'}} placeholder='Massa(kg)' value={this.state.ms}  />
         <Text>{'\n'}</Text>
-        <TextInput onChangeText={(angka2)=>this.setState({hg:angka2})} style={{height:40,width:250,backgroundColor:'lightblue'}} placeholder='tinggi(cm)' value={this.state.hg}  />
+        <TextInput onFocus={()=>{
+          var st = this.state.stat
+          if(st){
+            this.setState({stat:!this.state.stat})
+          }
+        }} onChangeText={(angka2)=>this.setState({hg:angka2})} style={{height:40,width:250,backgroundColor:'lightblue'}} placeholder='tinggi(cm)' value={this.state.hg}  />
         <Text>{'\n'}</Text>
         <Button onPress={()=>{this.klik();}} title="Hitung IMT" color="blue" style={{width:250,height:100}}/>
         {this.state.stat &&
         <View style={styles.welcome} hidden="true">
-          <Text style={styles.text}>Berat Badan:{'\n'}{this.state.ms} kg</Text>
-          <Text style={styles.text}>Tinggi Badan:{'\n'}{this.state.hg} m</Text>
-          <Text style={styles.text}>Index massa tubuh:{'\n'}{this.state.imt}</Text>
-          <Text style={styles.text}>Diagnosa:{'\n'}{this.state.diag}</Text>
+          <Text style={styles.text}>Berat Badan:</Text>
+          <Text style={styles.text2}>{this.state.ms} kg</Text>
+          <Text style={styles.text}>Tinggi Badan:</Text>
+          <Text style={styles.text2}>{this.state.hg} m</Text>
+          <Text style={styles.text}>Index massa tubuh:</Text>
+          <Text style={styles.text2}>{this.state.imt}</Text>
+          <Text style={styles.text}>Diagnosa:</Text>
+          <Text style={styles.text2}>{this.state.diag}</Text>
         </View>
       }
       </View>
@@ -84,6 +94,11 @@ const styles = StyleSheet.create({
   },
   text:{
     fontSize: 20,
+    textAlign:'center'
+  },
+  text2:{
+    fontSize: 35,
+    fontWeight: 'bold',
     textAlign:'center'
   }
 });
