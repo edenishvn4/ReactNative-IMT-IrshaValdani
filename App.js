@@ -49,7 +49,7 @@ class App extends Component{//<Props>
           }
         }} onChangeText={(angka1)=>this.setState({ms:angka1})} style={{height:40,width:250,backgroundColor:'lightblue'}} placeholder='Massa(kg)' value={this.state.ms}  />
         <Text>{'\n'}</Text>
-        <TextInput onChangeText={(angka2)=>this.setState({hg:angka2})} style={{height:40,width:250,backgroundColor:'lightblue'}} placeholder='tinggi(cm' value={this.state.hg}  />
+        <TextInput onChangeText={(angka2)=>this.setState({hg:angka2})} style={{height:40,width:250,backgroundColor:'lightblue'}} placeholder='tinggi(cm)' value={this.state.hg}  />
         <Text>{'\n'}</Text>
         <Button onPress={()=>{this.klik();}} title="Hitung IMT" color="blue" style={{width:250,height:100}}/>
         {this.state.stat &&
